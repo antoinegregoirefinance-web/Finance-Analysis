@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Outil local : aucune connexion réseau possible. Le mot de passe ne quitte jamais ce navigateur. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; img-src data:; form-action 'none'; base-uri 'none'">
+<title>Protéger la page — Altesia Finance</title>
+<style>
+  :root { --bg: #f4f5f7; --panel: #fff; --ink: #17202e; --ink-2: #4a5566; --line: #e3e6eb; --accent: #0f5ea8; --ok: #1a7f4b; --bad: #b42318; --ok-bg: #e9f7ef; --bad-bg: #fdecea; --info-bg: #e8f0fa; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0f141b; --panel: #161d27; --ink: #e8edf3; --ink-2: #b4bfcc; --line: #2a3443; --accent: #5aa2e8; --ok-bg: #12301f; --bad-bg: #3a1714; --info-bg: #1a2d44; --ok: #6fd39b; --bad: #f59a92; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 640px; margin: 40px auto; padding: 0 16px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+  h1 { font-size: 22px; margin: 0 0 6px; } p { color: var(--ink-2); margin: 6px 0 14px; }
+  label { display: block; font-size: 13px; color: var(--ink-2); margin: 14px 0 4px; }
+  input[type=password], input[type=file] { width: 100%; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); font: inherit; }
+  button { margin-top: 18px; padding: 10px 18px; border: 0; border-radius: 8px; background: var(--accent); color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+  button:disabled { opacity: .5; cursor: default; }
+  .msg { margin-top: 16px; padding: 10px 12px; border-radius: 8px; font-size: 14px; display: none; }
+  .msg.ok { display: block; background: var(--ok-bg); color: var(--ok); } .msg.bad { display: block; background: var(--bad-bg); color: var(--bad); } .msg.info { display: block; background: var(--info-bg); color: var(--ink); }
+  .meter { height: 6px; border-radius: 3px; background: var(--line); margin-top: 6px; overflow: hidden; } .meter i { display: block; height: 100%; width: 0; background: var(--bad); transition: .2s; }
+  ol { color: var(--ink-2); padding-left: 20px; } small { color: var(--ink-2); }
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <h1>Protéger la page par mot de passe</h1>
+    <p>Chiffre la suite Altesia Finance pour la publier sur GitHub Pages sans que personne ne puisse l'ouvrir ni lire son code sans le mot de passe. Tout se passe dans ce navigateur : le mot de passe n'est envoyé nulle part.</p>
+    <label for="f">1. La page à protéger (Altesia_Finance_Suite.html ou index.html non protégé)</label>
+    <input type="file" id="f" accept=".html,.htm">
+    <label for="p1">2. Phrase de passe (au moins 16 caractères ; idéalement 4 ou 5 mots)</label>
+    <input type="password" id="p1" autocomplete="new-password" placeholder="ex. cinq mots sans lien entre eux">
+    <div class="meter"><i id="m"></i></div><small id="mt">&nbsp;</small>
+    <label for="p2">Confirmer</label>
+    <input type="password" id="p2" autocomplete="new-password">
+    <button id="go">Créer la page protégée (index.html)</button>
+    <div class="msg" id="msg"></div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <b>Ensuite</b>
+    <ol><li>Dans le dépôt GitHub Finance-Analysis : « Add file » → « Upload files » → déposez le fichier <b>index.html</b> créé → « Commit changes ».</li>
+      <li>Après une minute, l'adresse du site demande le mot de passe.</li>
+      <li>Gardez la phrase de passe dans un gestionnaire de mots de passe : elle ne peut pas être retrouvée.</li>
+      <li>À chaque nouvelle version de la suite, repassez par cet outil avec la même phrase de passe (vos données mémorisées restent disponibles).</li></ol>
+  </div>
+</main>
+<script>
+'use strict';
+const ITER = 600000;
+const $ = id => document.getElementById(id);
+const b64 = u8 => { let s = ''; for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000)); return btoa(s); };
+async function gzip(bytes) { return new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer()); }
+function score(p) {
+  let s = Math.min(1, p.length / 24);
+  const kinds = [/[a-z]/, /[A-Z]/, /\d/, /[^\w]/, /\s/].filter(r => r.test(p)).length;
+  s = s * 0.75 + kinds / 5 * 0.25; return p.length < 16 ? Math.min(s, 0.45) : s;
+}
+$('p1').addEventListener('input', () => {
+  const s = score($('p1').value), m = $('m');
+  m.style.width = Math.round(s * 100) + '%'; m.style.background = s < 0.5 ? 'var(--bad)' : s < 0.75 ? '#e0a21f' : 'var(--ok)';
+  $('mt').textContent = !$('p1').value ? ' ' : s < 0.5 ? 'Trop faible' : s < 0.75 ? 'Correcte' : 'Solide';
+});
+const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function wrapper(csp, payload) {
+  return `<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="${esc(csp)}">
+<meta name="robots" content="noindex, nofollow">
+<title>Altesia Finance</title>
+<style>
+:root{--bg:#f4f5f7;--panel:#fff;--ink:#17202e;--ink2:#4a5566;--line:#e3e6eb;--acc:#0f5ea8;--bad:#b42318}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141b;--panel:#161d27;--ink:#e8edf3;--ink2:#b4bfcc;--line:#2a3443;--acc:#5aa2e8;--bad:#f59a92}}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding:16px}
+form{width:100%;max-width:380px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px}
+.logo{width:40px;height:40px;border-radius:10px;background:var(--acc);color:#fff;display:grid;place-items:center;font-weight:700;margin-bottom:12px}
+h1{font-size:19px;margin:0 0 4px}p{color:var(--ink2);margin:0 0 16px;font-size:13.5px}
+input[type=password]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit}
+label.r{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink2);margin:12px 0 0}
+button{width:100%;margin-top:16px;padding:11px;border:0;border-radius:8px;background:var(--acc);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+button:disabled{opacity:.6}#e{color:var(--bad);font-size:13.5px;min-height:20px;margin-top:10px}
+</style>
+</head>
+<body>
+<form id="f" autocomplete="on">
+  <div class="logo">AF</div><h1>Altesia Finance</h1><p>Page protégée. Saisissez la phrase de passe pour ouvrir la suite.</p>
+  <input type="text" name="username" value="Altesia Finance" autocomplete="username" hidden>
+  <input type="password" id="pw" autocomplete="current-password" placeholder="Phrase de passe" autofocus>
+  <label class="r"><input type="checkbox" id="rm"> Rester déverrouillé sur cet appareil</label>
+  <button id="b">Ouvrir</button><div id="e"></div>
+</form>
+<script id="payload" type="application/octet-stream">${payload.data}<\/script>
+<script>
+'use strict';
+const P = ${JSON.stringify({ salt: payload.salt, iv: payload.iv, iter: payload.iter, v: 1 })};
+const KEY = 'altesia-cle-page';
+const u8 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+async function derive(pw) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: u8(P.salt), iterations: P.iter, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, true, ['decrypt']);
+}
+async function open(key) {
+  const gz = new Uint8Array(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: u8(P.iv) }, key, u8(document.getElementById('payload').textContent.trim())));
+  const html = await new Response(new Blob([gz]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+  document.open(); document.write(html); document.close();
+}
+async function remembered() {
+  try { const r = JSON.parse(localStorage.getItem(KEY) || 'null'); if (!r || r.salt !== P.salt) return false;
+    const k = await crypto.subtle.importKey('raw', u8(r.k), 'AES-GCM', false, ['decrypt']); await open(k); return true; } catch (e) { return false; }
+}
+document.getElementById('f').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const b = document.getElementById('b'), e = document.getElementById('e'), pw = document.getElementById('pw').value;
+  if (!pw) return; b.disabled = true; b.textContent = 'Déverrouillage…'; e.textContent = '';
+  try {
+    const k = await derive(pw);
+    if (document.getElementById('rm').checked) {
+      const raw = new Uint8Array(await crypto.subtle.exportKey('raw', k)); let s = ''; raw.forEach(x => s += String.fromCharCode(x));
+      try { localStorage.setItem(KEY, JSON.stringify({ salt: P.salt, k: btoa(s) })); } catch (x) { /* stockage indisponible */ }
+    }
+    window.__altesiaPw = pw;   // transmis à la suite (en mémoire uniquement) pour recharger les sauvegardes chiffrées avec la même phrase
+    await open(k);
+  } catch (x) { b.disabled = false; b.textContent = 'Ouvrir'; e.textContent = 'Phrase de passe incorrecte.'; }
+});
+remembered();
+<\/script>
+</body>
+</html>
+`;
+}
+
+$('go').addEventListener('click', async () => {
+  const msg = $('msg'), f = $('f').files[0], p1 = $('p1').value, p2 = $('p2').value;
+  const say = (cls, t) => { msg.className = 'msg ' + cls; msg.textContent = t; };
+  if (!f) return say('bad', 'Choisissez d\'abord la page à protéger.');
+  if (p1.length < 16) return say('bad', 'La phrase de passe doit compter au moins 16 caractères.');
+  if (p1 !== p2) return say('bad', 'Les deux phrases de passe ne correspondent pas.');
+  const html = await f.text();
+  if (/id="payload" type="application\/octet-stream"/.test(html)) return say('bad', 'Cette page est déjà protégée : choisissez la version non protégée (Altesia_Finance_Suite.html).');
+  if (!/Altesia Finance/.test(html)) return say('bad', 'Ce fichier ne ressemble pas à la suite Altesia Finance.');
+  const csp = (/<meta http-equiv="Content-Security-Policy" content="([^"]+)"/.exec(html) || [])[1];
+  if (!csp) return say('bad', 'Politique de sécurité introuvable dans la page : fichier inattendu.');
+  $('go').disabled = true; say('info', 'Chiffrement en cours…');
+  try {
+    const salt = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12));
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(p1), 'PBKDF2', false, ['deriveKey']);
+    const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt, iterations: ITER, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['encrypt']);
+    const enc = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, await gzip(new TextEncoder().encode(html))));
+    const out = wrapper(csp.replace(/&quot;/g, '"').replace(/&amp;/g, '&'), { salt: b64(salt), iv: b64(iv), iter: ITER, data: b64(enc) });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([out], { type: 'text/html' })); a.download = 'index.html'; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    say('ok', `index.html créé (${Math.round(out.length / 1024)} Ko, chiffré AES-256). Déposez-le dans le dépôt GitHub. Gardez la phrase de passe en lieu sûr.`);
+  } catch (e) { say('bad', 'Erreur : ' + e.message); }
+  $('go').disabled = false;
+});
+</script>
+</body>
+</html>
