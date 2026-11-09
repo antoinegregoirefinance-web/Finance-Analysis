@@ -1,10 +1,7 @@
 {
-  "version": "V1",
+  "version": "V2",
   "date": "2026-11-09",
   "notes": [
-    "Carte des outils comme page d'accueil",
-    "Balances clients et fournisseurs : choix de la période et onglet « Évolution »",
-    "Export Excel complet",
-    "Pilotage financier, contrôles de complétude, dossiers suivis, sauvegardes simplifiées"
+    "Balances clients et fournisseurs : sélection de tiers et graphique de leur évolution dans le temps (top 10 par défaut)"
   ]
 }
