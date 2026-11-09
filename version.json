@@ -1,7 +1,8 @@
 {
-  "version": "V2",
+  "version": "V3",
   "date": "2026-11-09",
   "notes": [
+    "Tableau de bord 360° : graphique mois par mois au choix (CA, coûts, EBITDA, EBIT, résultat, trésorerie et ratios), plusieurs séries mélangées",
     "Balances clients et fournisseurs : sélection de tiers et graphique de leur évolution dans le temps (top 10 par défaut)"
   ]
 }
