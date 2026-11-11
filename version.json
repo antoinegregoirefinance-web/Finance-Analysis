@@ -1,7 +1,8 @@
 {
-  "version": "V4",
+  "version": "V5",
   "date": "2026-11-09",
   "notes": [
+    "Clic sur un graphique : l'onglet de détail s'ouvre pendant le clic (non bloqué par le navigateur), clic possible à côté d'un point",
     "Clic sur un graphique (tous les modules) : le détail (écritures du grand livre ou factures de la balance âgée) s'ouvre dans un nouvel onglet, avec export Excel",
     "Transactions : bouton « Exporter en Excel » pour télécharger la sélection affichée (avec les filtres)",
     "Tableau de bord 360° : graphique mois par mois au choix (CA, coûts, EBITDA, EBIT, résultat, trésorerie et ratios)",
