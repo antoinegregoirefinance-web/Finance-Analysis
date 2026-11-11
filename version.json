@@ -1,7 +1,8 @@
 {
-  "version": "V5",
-  "date": "2026-11-09",
+  "version": "V6",
+  "date": "2026-11-11",
   "notes": [
+    "Version en ligne (page protégée) : les clics sur les graphiques et les liens externes ouvrent bien un nouvel onglet",
     "Clic sur un graphique : l'onglet de détail s'ouvre pendant le clic (non bloqué par le navigateur), clic possible à côté d'un point",
     "Clic sur un graphique (tous les modules) : le détail (écritures du grand livre ou factures de la balance âgée) s'ouvre dans un nouvel onglet, avec export Excel",
     "Transactions : bouton « Exporter en Excel » pour télécharger la sélection affichée (avec les filtres)",
