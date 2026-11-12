@@ -1,7 +1,9 @@
 {
-  "version": "V9",
+  "version": "V11",
   "date": "2026-11-12",
   "notes": [
+    "Tous les graphiques de l'application : « ⚙ Modifier ce graphique » (séries affichées, barres ou courbes, barres empilées), mémorisé",
+    "Tableau de bord 360° : chaque graphique financier a ses options (« ⚙ Modifier ce graphique ») : séries, budget, année précédente, période, date du bilan",
     "Tableau de bord 360°, onglet Finances : indicateurs clés et 8 graphiques financiers classiques ; solvabilité corrigée (résultat compté une seule fois)",
     "Tableau de bord 360° en deux onglets : « Finances et graphiques » et « Indicateurs croisés et priorités »",
     "Détail d'un graphique dans une fenêtre sur la moitié droite de l'écran",
