@@ -1,7 +1,8 @@
 {
-  "version": "V18",
+  "version": "V19",
   "date": "2026-11-12",
   "notes": [
+    "V19 — Filtre « Départements » en haut de l'application : un ou plusieurs départements, appliqué à tous les modules",
     "Balances clients / fournisseurs : choix des tiers du graphique (10, 20, 50, tous, ajout libre) et fiche tiers en double-clic (pièces ouvertes + historique complet avec contreparties)",
     "Valorisation reliée à « Prévisions & valeur » : mêmes retraitements, taux, multiples, poids et projections DCF que le grand livre",
     "Clôture du mois : étapes cliquables (fait / à faire, note, validation manuelle) et double-clic sur un contrôle pour ouvrir son détail",
