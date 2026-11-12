@@ -1,7 +1,8 @@
 {
-  "version": "V13",
+  "version": "V14",
   "date": "2026-11-12",
   "notes": [
+    "Cash flow : prévision de trésorerie des 12 prochains mois sur base de l'historique (saisonnalité, croissance, scénarios prudent / central / optimiste, événements connus, seuil d'alerte)",
     "Nouveau module Valorisation : retraitements (résultat, dette nette, actif net) et 9 méthodes (ANC, rendement, praticiens, goodwill, multiples EBITDA / EBIT / CA, PER, DCF), pondération et fourchette",
     "Indicateurs clés du tableau de bord : valeur précédente et évolution (vert = amélioration, rouge = dégradation), vs même période N-1, mois précédent ou exercice précédent",
     "Tous les graphiques de l'application : « ⚙ Modifier ce graphique » (séries affichées, barres ou courbes, barres empilées), mémorisé",
