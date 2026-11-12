@@ -1,7 +1,9 @@
 {
-  "version": "V15",
+  "version": "V17",
   "date": "2026-11-12",
   "notes": [
+    "Valorisation reliée à « Prévisions & valeur » : mêmes retraitements, taux, multiples, poids et projections DCF que le grand livre",
+    "Clôture du mois : étapes cliquables (fait / à faire, note, validation manuelle) et double-clic sur un contrôle pour ouvrir son détail",
     "Graphiques : double-clic pour ouvrir le détail (un clic raté n'ouvre plus rien) ; la légende garde le simple clic",
     "Cash flow : prévision de trésorerie des 12 prochains mois sur base de l'historique (saisonnalité, croissance, scénarios prudent / central / optimiste, événements connus, seuil d'alerte)",
     "Nouveau module Valorisation : retraitements (résultat, dette nette, actif net) et 9 méthodes (ANC, rendement, praticiens, goodwill, multiples EBITDA / EBIT / CA, PER, DCF), pondération et fourchette",
