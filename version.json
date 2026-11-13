@@ -1,7 +1,8 @@
 {
-  "version": "V4",
+  "version": "V5",
   "date": "2026-11-13",
   "notes": [
+    "V5 — Sauvegardes : un dossier par entreprise au choix, tableau des emplacements",
     "V4 — Démo Fictiva SRL intégrée et chargée automatiquement à l'ouverture",
     "V3 — Import : choix du logiciel d'origine (Odoo, SAP, Sage) avec sa structure d'export classique ; balances âgées Odoo regroupées par tiers lues telles quelles",
     "V2 — Fiche entreprise : « Déposer des fichiers » importe chaque fichier dans le bon outil (avec choix du contenu et des colonnes) ; balances âgées : fenêtre des colonnes à chaque import",
