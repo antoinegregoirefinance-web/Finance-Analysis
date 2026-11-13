@@ -1,7 +1,8 @@
 {
-  "version": "V2",
+  "version": "V3",
   "date": "2026-11-13",
   "notes": [
+    "V3 — Import : choix du logiciel d'origine (Odoo, SAP, Sage) avec sa structure d'export classique ; balances âgées Odoo regroupées par tiers lues telles quelles",
     "V2 — Fiche entreprise : « Déposer des fichiers » importe chaque fichier dans le bon outil (avec choix du contenu et des colonnes) ; balances âgées : fenêtre des colonnes à chaque import",
     "V1 — Version de référence du 13 novembre 2026 : reprend toutes les évolutions précédentes"
   ]
