@@ -1,7 +1,8 @@
 {
-  "version": "V22",
+  "version": "V23",
   "date": "2026-11-13",
   "notes": [
+    "V23 — Bouton « ↶ Retour » (ou Alt + ←) pour revenir à l'écran précédent avec son onglet, son étape, ses filtres et sa position",
     "V22 — Tableau de bord 360° : pont « Du budget au réel » section par section (EBITDA ou résultat net)",
     "V21 — Colonne « Lettrage » du grand livre reconnue à l'import et utilisée en priorité pour relier factures et paiements",
     "V20 — Fiche client / fournisseur : lettrage facture ↔ paiement dans l'historique complet, clic sur une pièce pour filtrer la facture et ses paiements (ou l'inverse)",
