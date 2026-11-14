@@ -1,7 +1,8 @@
 {
-  "version": "V6",
+  "version": "V7",
   "date": "2026-11-14",
   "notes": [
+    "V7 — Sauvegardes : « Supprimer des entreprises », au choix, les autres restent",
     "V6 — Import GL / budget : fenêtre des colonnes toujours affichée, aperçu dans la structure standard, contrôle de la reconnaissance, export du GL retravaillé",
     "V5 — Sauvegardes : un dossier par entreprise au choix, tableau des emplacements",
     "V4 — Démo Fictiva SRL intégrée et chargée automatiquement à l'ouverture",
