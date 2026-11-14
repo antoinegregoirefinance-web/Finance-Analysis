@@ -1,7 +1,8 @@
 {
-  "version": "V8",
+  "version": "V9",
   "date": "2026-11-14",
   "notes": [
+    "V9 — Import : grand livre regroupé par compte (rapport Odoo / Exact / Sage) lu tel quel",
     "V8 — Rattachement des colonnes : Année et Mois affichés « calculé depuis la date »",
     "V7 — Sauvegardes : « Supprimer des entreprises », au choix, les autres restent",
     "V6 — Import GL / budget : fenêtre des colonnes toujours affichée, aperçu dans la structure standard, contrôle de la reconnaissance, export du GL retravaillé",
