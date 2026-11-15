@@ -1,7 +1,8 @@
 {
-  "version": "V13",
+  "version": "V14",
   "date": "2026-11-15",
   "notes": [
+    "V14 — Rapprochement automatique grand livre ↔ comptes annuels déposés (BNB), rubrique par rubrique",
     "V13 — Import : les 20 premières lignes affichées, une liste au-dessus de chaque colonne pour choisir ce qu'elle contient",
     "V12 — Carte des outils : Valorisation et Pilotage à jour dès l'ouverture",
     "V11 — Fiche d'import par client : paramétrage validé une fois, résumé aux imports suivants, partagé via les sauvegardes",
