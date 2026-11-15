@@ -1,7 +1,8 @@
 {
-  "version": "V10",
-  "date": "2026-11-14",
+  "version": "V11",
+  "date": "2026-11-15",
   "notes": [
+    "V11 — Fiche d'import par client : paramétrage validé une fois, résumé aux imports suivants, partagé via les sauvegardes",
     "V10 — Import du budget Odoo : postes budgétaires reliés aux comptes PCMN, signe corrigé",
     "V9 — Import : grand livre regroupé par compte (rapport Odoo / Exact / Sage) lu tel quel",
     "V8 — Rattachement des colonnes : Année et Mois affichés « calculé depuis la date »",
