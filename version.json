@@ -2,7 +2,7 @@
   "version": "V15",
   "date": "2026-11-15",
   "notes": [
-    "V15 — Import : colonne mixte déclarable (numéro + nom du compte sur les titres, n° de pièce sur les écritures) ; à droite des 20 premières lignes, ce que l'app retient de chaque ligne (type, compte, nom, pièce, date, année et mois calculés depuis la date choisie, montant) ; le découpage de la colonne mixte s'affiche en violet juste à côté d'elle (n° de compte, nom du compte, n° de pièce)",
+    "V15 — Import : colonne mixte déclarable (numéro + nom du compte sur les titres, n° de pièce sur les écritures) ; à droite des 20 premières lignes, ce que l'app retient de chaque ligne (type, compte, nom, pièce, date, année et mois calculés depuis la date choisie, montant) ; le découpage de la colonne mixte s'affiche en violet juste à côté d'elle (n° de compte, nom du compte, n° de pièce) ; « ✂ Diviser en 2… » dans la liste de chaque colonne pour une colonne qui contient deux informations (partie 1, partie 2, séparateur), découpage visible en violet et mémorisé pour l'entreprise",
     "V14 — Rapprochement automatique grand livre ↔ comptes annuels déposés (BNB), rubrique par rubrique",
     "V13 — Import : les 20 premières lignes affichées, une liste au-dessus de chaque colonne pour choisir ce qu'elle contient",
     "V12 — Carte des outils : Valorisation et Pilotage à jour dès l'ouverture",
