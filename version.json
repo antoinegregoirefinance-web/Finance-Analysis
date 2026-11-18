@@ -1,7 +1,9 @@
 {
-  "version": "V23",
-  "date": "2026-11-17",
+  "version": "V25",
+  "date": "2026-11-18",
   "notes": [
+    "V25 — Principaux clients et fournisseurs : dans le graphique « Tous les clients / fournisseurs », on sélectionne désormais un tiers en cliquant sur son nom (en bleu, en gras une fois sélectionné) et non plus sur sa barre ; recliquer sur le nom revient à la vue globale.",
+    "V24 — Valorisation : nouveau bouton « 📊 Exporter en Excel ». Le classeur contient 3 onglets avec de vraies formules : « Hypothèses » (cellules jaunes modifiables : taux, multiples, poids, retraitements, dette nette, projection), « Chiffres » (comptes des derniers exercices, retraitements, résultat normatif, projection et flux du DCF, dette nette et actif net corrigé) et « Valorisation » (synthèse, 9 méthodes avec leur détail, pondération, décote, plancher et sensibilité du DCF). Modifiez une hypothèse : tout se recalcule. Correction : en mode « hypothèses propres au module », l'option « Ajouter les 12 derniers mois » ne bloque plus le calcul.",
     "V23 — Pilotage financier : un double-clic sur un ratio (dette nette / EBITDA, solvabilité, endettement, liquidités, couverture des intérêts), sur une tuile (dette, trésorerie, EBITDA, fonds propres) ou sur un indicateur du fonds de roulement (BFR, DSO, DPO, DIO, cycle) ouvre sa fiche : formule et chiffres du calcul, toutes les années, courbe sur 36 mois avec le seuil, marge en euros avant dépassement du seuil, test de résistance (baisse de l'EBITDA), lecture et pistes d'amélioration",
     "V22 — Rapports entièrement modulables : rapport mensuel de clôture et PowerPoint (blocs et diapositives à cocher, éléments à l'intérieur de chaque bloc — graphiques, tableaux, tuiles —, données de comparaison N-1 / budget réglables bloc par bloc, zones de texte libres, notes et messages clés, titre, mention Confidentiel, ordre et sauts de page) ; modèles nommés valables pour une entreprise ou pour toutes, repris dans la sauvegarde et réutilisés d'un mois à l'autre",
     "V21 — Rapports modulables : rapport mensuel de clôture (choix des blocs, ordre, sauts de page, titre personnalisé, mention Confidentiel, modèles ; choix figés avec le rapport) et PowerPoint de reporting (choix des diapositives, ordre, titre, modèles Direction / Banque / Commercial)",
